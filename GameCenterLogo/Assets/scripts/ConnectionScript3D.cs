@@ -32,8 +32,8 @@ public class ConnectionScript3D : MonoBehaviour {
 		end2.name = "ConnectionEnd2-" + index;
 
 		//The end caps don't need colliders right?
-		end1.GetComponent<SphereCollider>().enabled = false;
-		end2.GetComponent<SphereCollider>().enabled = false;
+		//end1.GetComponent<SphereCollider>().enabled = false;
+		//end2.GetComponent<SphereCollider>().enabled = false;
 
 
 		end1.transform.position = transform.position;
