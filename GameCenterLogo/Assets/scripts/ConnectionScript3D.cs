@@ -31,6 +31,11 @@ public class ConnectionScript3D : MonoBehaviour {
 		end2 = (Instantiate(Resources.Load("Sphere")) as GameObject).transform;
 		end2.name = "ConnectionEnd2-" + index;
 
+		//The end caps don't need colliders right?
+		end1.GetComponent<SphereCollider>().enabled = false;
+		end2.GetComponent<SphereCollider>().enabled = false;
+
+
 		end1.transform.position = transform.position;
 
 		transform.parent = end1.transform;
@@ -60,7 +65,8 @@ public class ConnectionScript3D : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(GameManagerScript.rotateConnections){
-			if(lerp <= 1){
+			
+			if (lerp <= 1){
 
 				lerp += Time.deltaTime/GameManagerScript.instance.rotateSpeed;
 
@@ -72,8 +78,15 @@ public class ConnectionScript3D : MonoBehaviour {
 				end1.rotation = newQuat;
 			} else {
 				active = false;
+				ToggleRendering(false);
 			}
 		}
+	}
+
+
+	void ToggleRendering(bool toggle) {
+		end1.GetComponent<MeshRenderer>().enabled = toggle;
+		end2.GetComponent<MeshRenderer>().enabled = toggle;
 	}
 
 	float MapInterval(float val, float srcMin, float srcMax, float dstMin, float dstMax) {
@@ -84,8 +97,9 @@ public class ConnectionScript3D : MonoBehaviour {
 
 	public void SelectNodeToRotateTo(){
 		active = true;
+		ToggleRendering(true);
 
-		if(Random.Range(0, 4) < 1){
+		if (Random.Range(0, 4) < 1){
 			return;
 		}
 
