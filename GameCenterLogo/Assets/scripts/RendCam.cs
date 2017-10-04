@@ -21,7 +21,7 @@ public class RendCam : MonoBehaviour {
 	void InitializeCamera() {
 		
 
-		var tex = new RenderTexture(900, 900, 24, RenderTextureFormat.ARGB32, RenderTextureReadWrite.Default);
+		var tex = new RenderTexture(Screen.width, Screen.height, 24, RenderTextureFormat.ARGB32, RenderTextureReadWrite.Default);
 		tex.antiAliasing = 1;
 		tex.wrapMode = TextureWrapMode.Clamp;
 		tex.filterMode = FilterMode.Bilinear;
