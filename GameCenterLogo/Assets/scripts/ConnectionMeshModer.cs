@@ -10,17 +10,21 @@ public class ConnectionMeshModer : MonoBehaviour {
 	public float step = 0.1f;
 
 	// Use this for initialization
-	void Start () {		
-//		Mesh mesh = GetComponent<MeshFilter>().mesh;
-//		Vector3[] vertices = mesh.vertices;
-//		int i = 0;
-//
-//		while (i < vertices.Length) {
-//			vertices[i] += Vector3.up * Time.deltaTime;
-//			i++;
-//		}
-//		mesh.vertices = vertices;
-//		mesh.RecalculateBounds();
+	void Start () {
+		//		Mesh mesh = GetComponent<MeshFilter>().mesh;
+		//		Vector3[] vertices = mesh.vertices;
+		//		int i = 0;
+		//
+		//		while (i < vertices.Length) {
+		//			vertices[i] += Vector3.up * Time.deltaTime;
+		//			i++;
+		//		}
+		//		mesh.vertices = vertices;
+		//		mesh.RecalculateBounds();
+
+		Mesh mesh = GetComponent<MeshFilter>().mesh;
+		CalculateTangents.CalculateMeshTangents(mesh);
+
 	}
 	
 	// Update is called once per frame

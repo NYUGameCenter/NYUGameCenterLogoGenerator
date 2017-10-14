@@ -6,7 +6,7 @@ public class RendCam : MonoBehaviour {
 
 	Camera actualcamera;
 	public Material newlogomat;
-
+	RenderTexture tex;
 
 	void Start () {
 		actualcamera = GetComponent<Camera>();
@@ -19,15 +19,24 @@ public class RendCam : MonoBehaviour {
 	}
 
 	void InitializeCamera() {
-		
 
-		var tex = new RenderTexture(Screen.width, Screen.height, 24, RenderTextureFormat.ARGB32, RenderTextureReadWrite.Default);
+
+		tex = new RenderTexture(Screen.width, Screen.width, 24, RenderTextureFormat.ARGB32, RenderTextureReadWrite.Default);
 		tex.antiAliasing = 1;
 		tex.wrapMode = TextureWrapMode.Clamp;
 		tex.filterMode = FilterMode.Bilinear;
 		tex.Create();
 		actualcamera.targetTexture = tex;
+		SnapRender();
 		newlogomat.SetTexture("_MainTex", tex);
 		//camera_display.camera_livescreen.texture = tex;
+	}
+
+	public void SnapRender() {
+		Debug.Log("click!");
+		actualcamera.enabled = true;
+		actualcamera.Render();
+		actualcamera.enabled = false;
+
 	}
 }

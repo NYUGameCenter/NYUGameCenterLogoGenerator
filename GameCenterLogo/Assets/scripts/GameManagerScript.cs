@@ -23,6 +23,8 @@ public class GameManagerScript : MonoBehaviour {
 
 	public static GameManagerScript instance;
 
+	//public RendCam rendcamlogo;
+
 	// Use this for initialization
 	void Start () {
 
@@ -118,6 +120,7 @@ public class GameManagerScript : MonoBehaviour {
 			} 
 		} else {
 			if(ConnectionAnimationComplete()){
+				//rendcamlogo.SnapRender();
 				setupConnectionsRotation();
 			}
 		}
