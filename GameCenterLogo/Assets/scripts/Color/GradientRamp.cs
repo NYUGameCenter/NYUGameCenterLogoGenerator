@@ -7,7 +7,7 @@ public class GradientRamp : MonoBehaviour {
 	[Range(0f, 1f)]	public float amount = 1f;
 
 	public Gradient gradientColors;
-
+	public Gradient gradientColors2;
 
 	Texture rampTexture;
 	public Shader shader;
@@ -25,6 +25,10 @@ public class GradientRamp : MonoBehaviour {
 	void OnDisable() {
 		if (_material)
 			DestroyImmediate(_material);
+	}
+
+	public void UpdateGradient() {
+		rampTexture = GradientToRamp(gradientColors) as Texture;
 	}
 
 	void Awake() {
